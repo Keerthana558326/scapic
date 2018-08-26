@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>Surprise Question</title>
+		<style>
+			body { margin: 10; }
+			canvas { width: 150; height: 150; }
+			.button {
+    background-color: #0d0a19;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    font-size: 16px;
+}
+		</style>
+	</head>
+	<body>
+		<script src="C:\Users\new\Videos\js\three.js"></script>
+		<script>
+		
+		var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(50, 500 / 400, 0.1, 1000);
+
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(500, 400);
+document.body.appendChild(renderer.domElement);
+function init(){
+var geometry = new THREE.SphereGeometry(3, 50, 50, 0, Math.PI * 2, 0, Math.PI * 2);
+var material = new THREE.MeshNormalMaterial();
+var cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+renderer.render(scene,camera);
+camera.position.z = 10;
+var render = function () {
+    requestAnimationFrame(render);
+
+    cube.rotation.x += 0.1;
+
+    renderer.render(scene, camera);
+};
+
+render();
+}
+</script>
+<button class="button" onclick="init()"><b>Rotation</b></button>
+</body>
+</html>
